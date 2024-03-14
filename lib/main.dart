@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sharedpreference/home.dart';
+import 'package:sharedpreference/loginScreen.dart';
+import 'package:sharedpreference/splash.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,9 +19,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
         useMaterial3: true,
       ),
-      initialRoute: "homeScreen",
+      initialRoute: "Splash",
       routes: {
+        "Splash": (context) => Splash(),
         "homeScreen": (context) => HomeScreen(),
+        "login": (context) => LoginScreen(),
       },
     );
   }
