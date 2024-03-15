@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:sharedpreference/home.dart';
 import 'package:sharedpreference/key.dart';
@@ -16,10 +15,10 @@ class Splash extends StatefulWidget {
 
 class SplashState extends State<Splash> {
   static const String KEYLOGIN = "login";
+
   @override
   void initState() {
     super.initState();
-
     whereToGo();
   }
 
@@ -38,7 +37,6 @@ class SplashState extends State<Splash> {
 
   void whereToGo() async {
     var sharedPref = await SharedPreferences.getInstance();
-
     var isLoggedIn = sharedPref.getBool(KEYLOGIN);
 
     Timer(Duration(seconds: 3), () {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sharedpreference/home.dart';
 import 'package:sharedpreference/loginScreen.dart';
+import 'package:sharedpreference/new.dart';
 import 'package:sharedpreference/splash.dart';
 
 void main() {
@@ -10,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,6 +24,7 @@ class MyApp extends StatelessWidget {
         "Splash": (context) => Splash(),
         "homeScreen": (context) => HomeScreen(),
         "login": (context) => LoginScreen(),
+        "new": (context) => New(),
       },
     );
   }

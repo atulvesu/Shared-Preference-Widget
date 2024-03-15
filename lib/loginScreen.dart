@@ -8,10 +8,14 @@ class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<LoginScreen> createState() => LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class LoginScreenState extends State<LoginScreen> {
+  final nameController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,9 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
               size: 100,
             )),
             TextFormField(
+              controller: nameController,
               decoration: InputDecoration(labelText: "Email"),
             ),
             TextFormField(
+              controller: passwordController,
               decoration: InputDecoration(labelText: "password"),
             ),
             SizedBox(
