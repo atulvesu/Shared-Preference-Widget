@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:image_picker/image_picker.dart';
@@ -23,6 +22,16 @@ class _SaveScreenState extends State<SaveScreen> {
 
   void selectedImage() async {
     List<int>? img = await pickImage(ImageSource.camera);
+
+    if (img != null) {
+      setState(() {
+        _image = Uint8List.fromList(img);
+      });
+    }
+  }
+
+  void selectedImage2() async {
+    List<int>? img = await pickImage(ImageSource.gallery);
 
     if (img != null) {
       setState(() {
@@ -82,7 +91,65 @@ class _SaveScreenState extends State<SaveScreen> {
                     bottom: 10,
                     right: 0,
                     child: IconButton(
-                      onPressed: selectedImage,
+                      onPressed: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                color: Colors.white,
+                                padding: EdgeInsets.all(10),
+                                height: 200,
+                                child: Column(
+                                  children: [
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        selectedImage();
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(20),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                        ),
+                                        alignment: Alignment.center,
+                                        width: double.infinity,
+                                        child: Text('Camera'),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                        selectedImage2();
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(20),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                        ),
+                                        alignment: Alignment.center,
+                                        width: double.infinity,
+                                        child: Text('Gallery'),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.pop(context);
+                                      },
+                                      child: Container(
+                                        padding: EdgeInsets.all(20),
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                        ),
+                                        alignment: Alignment.center,
+                                        width: double.infinity,
+                                        child: Text('Close'),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            });
+                      },
                       icon: Icon(
                         Icons.add_a_photo,
                         color: Colors.blue,
